@@ -1,4 +1,4 @@
-package codepath.demos.helloworlddemo;
+package codepath.app.simpletodo;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 
+import codepath.demos.helloworlddemo.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,7 +21,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.TextView;
 
-public class HelloWorldActivity extends Activity {
+public class TodoActivity extends Activity {
 	
 	ArrayList<String> items;
 	ArrayAdapter<String> itemsAdapter;
@@ -30,7 +31,7 @@ public class HelloWorldActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_hello_world);
+		setContentView(R.layout.activity_todo);
 		lvItems = (ListView) findViewById(R.id.lvItems);
 		items = new ArrayList<String>();
 		readItems();
@@ -44,7 +45,7 @@ public class HelloWorldActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_hello_world, menu);
+		getMenuInflater().inflate(R.menu.activity_todo, menu);
 		return true;
 	}
 	
@@ -63,7 +64,7 @@ public class HelloWorldActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 
-				Intent i = new Intent(HelloWorldActivity.this, EditItemActivity.class);
+				Intent i = new Intent(TodoActivity.this, EditItemActivity.class);
 				i.putExtra("oldItem", items.get(position)); 
 				i.putExtra("position", position); 
 				startActivityForResult(i, REQUEST_CODE);		
