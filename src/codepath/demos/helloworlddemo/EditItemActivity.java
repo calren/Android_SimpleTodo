@@ -1,23 +1,14 @@
 package codepath.demos.helloworlddemo;
 
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.os.Build;
 
 public class EditItemActivity extends Activity {
 	
@@ -53,7 +44,7 @@ public class EditItemActivity extends Activity {
 		Intent data = new Intent();
 		data.putExtra("newItem", etNewItem.getText().toString());
 		data.putExtra("position", position);
-		setResult(RESULT_OK, data); // set result code and bundle data for response
+		setResult(RESULT_OK, data);
 		finish(); 
 	}
 

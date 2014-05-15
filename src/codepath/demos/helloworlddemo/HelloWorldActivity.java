@@ -36,8 +36,8 @@ public class HelloWorldActivity extends Activity {
 		readItems();
 		itemsAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, items);
 		lvItems.setAdapter(itemsAdapter);
-		items.add("First Item");
-		items.add("Second Item");
+		items.add("Start adding items!");
+		items.add("Add some more items!");
 		setupListViewListener();
 	}
 

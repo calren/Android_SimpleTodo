@@ -7,18 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="codepath.demos.helloworlddemo.EditItemActivity$PlaceholderFragment" >
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="68dp"
-        android:ems="10"
-        android:inputType="textMultiLine" />
-
+    
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
@@ -28,5 +17,28 @@
         android:layout_marginTop="67dp"
         android:onClick="changeToDoItem"
         android:text="Save" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:ems="10"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="36dp"
+        android:text="Edit Me!"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
