@@ -25,11 +25,14 @@ public class EditItemActivity extends Activity {
 		
 		// set text to old text
 		EditText etNewItem = (EditText) findViewById(R.id.editText1);
+		EditText etPriority = (EditText) findViewById(R.id.editText2);
 		
 		//put cursor at the end of text
 		etNewItem.setText(oldText);
 		Editable etext = etNewItem.getText();
 		Selection.setSelection(etext, oldText.length());
+		
+//		etPriority.setText(0);
 
 	}
 
@@ -42,9 +45,11 @@ public class EditItemActivity extends Activity {
 	
 	public void changeToDoItem(View v) {
 		EditText etNewItem = (EditText) findViewById(R.id.editText1);
+		EditText etPriority = (EditText) findViewById(R.id.editText2);
 		Intent data = new Intent();
 		data.putExtra("newItem", etNewItem.getText().toString());
 		data.putExtra("position", position);
+		data.putExtra("priority", Integer.parseInt(etPriority.getText().toString()));
 		setResult(RESULT_OK, data);
 		finish(); 
 	}

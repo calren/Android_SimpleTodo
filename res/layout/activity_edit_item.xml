@@ -7,29 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="codepath.app.simpletodo.EditItemActivity$PlaceholderFragment" >
-    
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="67dp"
-        android:onClick="changeToDoItem"
-        android:text="Save" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:ems="10"
-        android:inputType="textMultiLine" >
-
-        <requestFocus />
-    </EditText>
 
     <TextView
         android:id="@+id/textView1"
@@ -40,5 +17,46 @@
         android:layout_marginTop="36dp"
         android:text="Edit Me!"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="71dp"
+        android:onClick="changeToDoItem"
+        android:text="Save" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSave"
+        android:layout_alignLeft="@+id/btnSave"
+        android:layout_marginBottom="38dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_centerVertical="true"
+        android:text="Priority"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

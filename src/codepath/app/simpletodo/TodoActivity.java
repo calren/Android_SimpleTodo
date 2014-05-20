@@ -3,6 +3,7 @@ package codepath.app.simpletodo;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 
@@ -23,6 +24,7 @@ import android.widget.TextView;
 
 public class TodoActivity extends Activity {
 	
+	TreeMap<String, Integer> preSorted;
 	ArrayList<String> items;
 	ArrayAdapter<String> itemsAdapter;
 	ListView lvItems;
@@ -33,12 +35,12 @@ public class TodoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_todo);
 		lvItems = (ListView) findViewById(R.id.lvItems);
-		items = new ArrayList<String>();
+		preSorted = new TreeMap<String, Integer>();
+		items = sort(preSorted);
 		readItems();
 		itemsAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, items);
 		lvItems.setAdapter(itemsAdapter);
 		items.add("Start adding items!");
-		items.add("Add some more items!");
 		setupListViewListener();
 	}
 
@@ -54,6 +56,7 @@ public class TodoActivity extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long rowId) {
 				items.remove(position);
+				preSorted.remove(((TextView)view).getText());
 				itemsAdapter.notifyDataSetChanged();
 				saveItems();
 				return true;
@@ -78,18 +81,33 @@ public class TodoActivity extends Activity {
 	  if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 	     String name = data.getExtras().getString("newItem");
 	     int position = data.getExtras().getInt("position");
+	     int priority = data.getExtras().getInt("priority");
 	     // insert in correct place
-	     items.remove(position);
-	     items.add(position, name);
+	     preSorted.remove(name);
+	     preSorted.put(name, priority);
+	     items.clear();
+	     for(String item: preSorted.keySet()){
+				items.add(item);
+			}	     
 	     saveItems();
 	     itemsAdapter.notifyDataSetChanged();
 	  }
+	}
+	
+	public ArrayList<String> sort(TreeMap<String, Integer> t) {
+		ArrayList<String> result = new ArrayList<String>();
+		for(String item: t.keySet()){
+			result.add(item);
+		}
+		
+		return result;
 	}
 	
 	public void addToDoItem(View v) {
 		EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
 		itemsAdapter.add(etNewItem.getText().toString());
 		etNewItem.setText("");
+		preSorted.put(etNewItem.getText().toString(), 0);
 		saveItems();
 	}
 	
