@@ -88,7 +88,7 @@ public class TodoActivity extends Activity {
 	     items.clear();
 	     for(String item: preSorted.keySet()){
 				items.add(item);
-			}	     
+		 }	     
 	     saveItems();
 	     itemsAdapter.notifyDataSetChanged();
 	  }
@@ -106,8 +106,8 @@ public class TodoActivity extends Activity {
 	public void addToDoItem(View v) {
 		EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
 		itemsAdapter.add(etNewItem.getText().toString());
-		etNewItem.setText("");
 		preSorted.put(etNewItem.getText().toString(), 0);
+		etNewItem.setText("");
 		saveItems();
 	}
 	
@@ -125,6 +125,7 @@ public class TodoActivity extends Activity {
 	private void saveItems() {
 		File filesDir = getFilesDir();
 		File todoFile = new File(filesDir, "todo.txt");
+//		items = sort(preSorted);
 		try {
 			FileUtils.writeLines(todoFile, items);
 		} catch (IOException e) {

@@ -49,7 +49,13 @@ public class EditItemActivity extends Activity {
 		Intent data = new Intent();
 		data.putExtra("newItem", etNewItem.getText().toString());
 		data.putExtra("position", position);
-		data.putExtra("priority", Integer.parseInt(etPriority.getText().toString()));
+		int priority = 0;
+		try {
+			priority = Integer.parseInt(etPriority.getText().toString());
+		} catch (Exception e) {
+			
+		}
+		data.putExtra("priority", priority);
 		setResult(RESULT_OK, data);
 		finish(); 
 	}
